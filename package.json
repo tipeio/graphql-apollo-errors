@@ -1,12 +1,15 @@
 {
-  "name": "graphql-apollo-errors",
+  "name": "@tipe/graphql-apollo-errors",
   "version": "2.0.2",
   "description": "A small library to handle graphql and apollo errors in a better way",
   "main": "dist/index.js",
   "scripts": {
     "compile": "babel -d dist/ lib/",
     "watch": "babel --watch -d dist/ lib/",
-    "prepublish": "npm run compile",
+    "prepublishOnly": "npm run compile",
+    "version": "git add .",
+    "preversion": "npm test",
+    "postversion": "git push && git push --tags",
     "test": "mocha --compilers js:babel-core/register \"lib/**/*.spec.js\"",
     "coverage": "istanbul cover _mocha -- --compilers js:babel-core/register \"lib/**/*.spec.js\" -R spec",
     "coveralls": "istanbul cover _mocha --report lcovonly -- --compilers js:babel-core/register \"lib/**/*.spec.js\" -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
